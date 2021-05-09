@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+    <artifactId>tacos-cloud</artifactId>
+    <packaging>jar</packaging>
+
+    <name>tacos-cloud</name>
+    <description>
+        The main module that pulls the other modules together and provides the Spring Boot main class.
+    </description>
+    <!-- 声明父Maven项目 -->
+    <parent>
+        <groupId>sia</groupId>
+        <artifactId>tacos-cloud-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- TacoCloud dependencies -->
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacos-data</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacos-ui</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacos-domain</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacos-security</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>sia</groupId>
+            <artifactId>tacos-api</artifactId>
+            <version>${tacocloud.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
+        <!-- 该连接在springboot中如果没有手动设置其他连接池一般会默认使用其，这里显示设置 -->
+        <!-- https://mvnrepository.com/artifact/hikari-cp/hikari-cp -->
+        <dependency>
+            <groupId>hikari-cp</groupId>
+            <artifactId>hikari-cp</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <!-- 引入jpa依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- @ConfigurationProperties注解依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Actuator and DevTools...just because -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
